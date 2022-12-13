@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Code4Nothing.About\Code4Nothing.About.csproj" />
+      <ProjectReference Include="..\Code4Nothing.Blogs\Code4Nothing.Blogs.csproj" />
+      <ProjectReference Include="..\Code4Nothing.Projects\Code4Nothing.Projects.csproj" />
+      <ProjectReference Include="..\Code4Nothing.Trainings\Code4Nothing.Trainings.csproj" />
+    </ItemGroup>
+
+</Project>
