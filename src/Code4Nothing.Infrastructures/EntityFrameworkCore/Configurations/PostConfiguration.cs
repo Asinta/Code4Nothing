@@ -16,6 +16,8 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
         builder.Property(p => p.Title).HasMaxLength(128);
         builder.Property(p => p.Content);
 
+        builder.HasMany(p => p.Tags).WithMany(t => t.Posts);
+
         builder.HasIndex(p => p.Title).IsUnique();
     }
 }

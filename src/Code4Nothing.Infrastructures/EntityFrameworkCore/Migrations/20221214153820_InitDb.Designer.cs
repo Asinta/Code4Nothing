@@ -12,15 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Code4Nothing.Infrastructures.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(Code4NothingDbContext))]
-    [Migration("20221214101431_InitDatabase")]
-    partial class InitDatabase
+    [Migration("20221214153820_InitDb")]
+    partial class InitDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.1")
+                .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -129,25 +129,6 @@ namespace Code4Nothing.Infrastructures.EntityFrameworkCore.Migrations
                     b.ToTable("posts", "blogs");
                 });
 
-            modelBuilder.Entity("Code4Nothing.Infrastructures.EntityFrameworkCore.Entities.PostTag", b =>
-                {
-                    b.Property<Guid>("PostId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("post_id");
-
-                    b.Property<int>("TagId")
-                        .HasColumnType("integer")
-                        .HasColumnName("tag_id");
-
-                    b.HasKey("PostId", "TagId")
-                        .HasName("pk_post_tags");
-
-                    b.HasIndex("TagId")
-                        .HasDatabaseName("ix_post_tags_tag_id");
-
-                    b.ToTable("post_tags", "blogs");
-                });
-
             modelBuilder.Entity("Code4Nothing.Infrastructures.EntityFrameworkCore.Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
@@ -168,7 +149,7 @@ namespace Code4Nothing.Infrastructures.EntityFrameworkCore.Migrations
                     b.HasKey("Id")
                         .HasName("pk_tags");
 
-                    b.ToTable("tags", (string)null);
+                    b.ToTable("tags", "blogs");
                 });
 
             modelBuilder.Entity("PostTag", b =>
@@ -187,7 +168,7 @@ namespace Code4Nothing.Infrastructures.EntityFrameworkCore.Migrations
                     b.HasIndex("TagsId")
                         .HasDatabaseName("ix_post_tag_tags_id");
 
-                    b.ToTable("post_tag", (string)null);
+                    b.ToTable("post_tag", "blogs");
                 });
 
             modelBuilder.Entity("Code4Nothing.Infrastructures.EntityFrameworkCore.Entities.Post", b =>
@@ -200,27 +181,6 @@ namespace Code4Nothing.Infrastructures.EntityFrameworkCore.Migrations
                         .HasConstraintName("fk_posts_categories_category_id");
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Code4Nothing.Infrastructures.EntityFrameworkCore.Entities.PostTag", b =>
-                {
-                    b.HasOne("Code4Nothing.Infrastructures.EntityFrameworkCore.Entities.Post", "Post")
-                        .WithMany()
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_post_tags_posts_post_id");
-
-                    b.HasOne("Code4Nothing.Infrastructures.EntityFrameworkCore.Entities.Tag", "Tag")
-                        .WithMany()
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_post_tags_tags_tag_id");
-
-                    b.Navigation("Post");
-
-                    b.Navigation("Tag");
                 });
 
             modelBuilder.Entity("PostTag", b =>

@@ -5,7 +5,6 @@ public class Code4NothingDbContext : DbContext
     public DbSet<Post> Posts { get; set; }
     public DbSet<Tag> Tags { get; set; }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<PostTag> PostTags { get; set; }
     
     public Code4NothingDbContext() { }
     public Code4NothingDbContext(DbContextOptions options) : base(options) { }
@@ -14,6 +13,6 @@ public class Code4NothingDbContext : DbContext
     {
         modelBuilder.ApplyConfiguration(new PostConfiguration());
         modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-        modelBuilder.ApplyConfiguration(new PostTagConfiguration());
+        modelBuilder.ApplyConfiguration(new TagConfiguration());
     }
 }
