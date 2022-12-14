@@ -3,11 +3,28 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Code4Nothing.SharedDefinitions\Code4Nothing.SharedDefinitions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="AzureBucket" />
+      <Folder Include="EntityFrameworkCore\DataSeeders" />
+      <Folder Include="EntityFrameworkCore\Migrations" />
+      <Folder Include="Mails" />
+      <Folder Include="Queues" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EFCore.NamingConventions" Version="7.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
     </ItemGroup>
 
 </Project>
