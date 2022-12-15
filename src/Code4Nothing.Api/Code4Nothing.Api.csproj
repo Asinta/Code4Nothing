@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
@@ -20,6 +20,10 @@
       <ProjectReference Include="..\Code4Nothing.Blogs\Code4Nothing.Blogs.csproj" />
       <ProjectReference Include="..\Code4Nothing.Projects\Code4Nothing.Projects.csproj" />
       <ProjectReference Include="..\Code4Nothing.Trainings\Code4Nothing.Trainings.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot" />
     </ItemGroup>
 
 </Project>

@@ -4,39 +4,35 @@ Log.Information("Starting web host...");
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddEntityFrameworkCoreServices(builder.Configuration);
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+await MigrateDatabaseAsync(app);
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 
+app.UseCors(x => x.AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowCredentials()
+    .WithOrigins("http://localhost:4200"));
+
 app.UseAuthorization();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapControllers();
+app.MapFallbackToController("Index", "Fallback");
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var db = services.GetService<Code4NothingDbContext>();
-        
-    Log.Logger.Write(LogEventLevel.Information, "Migrating Database...");
-    db?.Database.Migrate();
-        
-    Log.Logger.Write(LogEventLevel.Information, "Seeding Data...");
-    // db.SeedData();
-}
+await app.RunAsync();
 
-app.Run("https://0.0.0.0:6000");
-
+#region Helpers
 
 static void ConfigureLogger(string currentEnvironment)
 {
@@ -50,3 +46,21 @@ static void ConfigureLogger(string currentEnvironment)
         .WriteTo.Console()
         .CreateLogger();
 }
+
+async Task MigrateDatabaseAsync(IHost webApplication)
+{
+    using var scope = webApplication.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<Code4NothingDbContext>();
+        await context.Database.MigrateAsync();
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred during migration");
+    }
+}
+
+#endregion
