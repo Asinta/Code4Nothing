@@ -15,52 +15,94 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity: class
         Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
-        int pageIndex = 0, int pageSize = 20, bool disableTracking = true, bool ignoreQueryFilters = false)
+        int pageIndex = 0,
+        int pageSize = 20,
+        bool disableTracking = true,
+        bool ignoreQueryFilters = false)
     {
         throw new NotImplementedException();
     }
 
-    public IPagedCollection<TResult> GetPagedCollection<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = true,
+    public IPagedCollection<TResult> GetPagedCollection<TResult>(
+        Expression<Func<TEntity, TResult>> selector,
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        int pageIndex = 0,
+        int pageSize = 20,
+        bool disableTracking = true,
         bool ignoreQueryFilters = false) where TResult : class
     {
         throw new NotImplementedException();
     }
 
-    public Task<IPagedCollection<TEntity>> GetPagedCollectionAsync(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
-        int pageIndex = 0, int pageSize = 20, bool disableTracking = true, bool ignoreQueryFilters = false,
+    public Task<IPagedCollection<TEntity>> GetPagedCollectionAsync(
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        int pageIndex = 0,
+        int pageSize = 20,
+        bool disableTracking = true,
+        bool ignoreQueryFilters = false,
         CancellationToken ct = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IPagedCollection<TResult>> GetPagedCollectionAsync<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = true,
-        bool ignoreQueryFilters = false, CancellationToken ct = default) where TResult : class
+    public Task<IPagedCollection<TResult>> GetPagedCollectionAsync<TResult>(
+        Expression<Func<TEntity, TResult>> selector,
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        int pageIndex = 0,
+        int pageSize = 20,
+        bool disableTracking = true,
+        bool ignoreQueryFilters = false,
+        CancellationToken ct = default) where TResult : class
     {
         throw new NotImplementedException();
     }
 
-    public TEntity GetFirstOrDefault(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
-        bool disableTracking = true, bool ignoreQueryFilters = false)
+    public TEntity GetFirstOrDefault(
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool disableTracking = true,
+        bool ignoreQueryFilters = false)
     {
         throw new NotImplementedException();
     }
 
-    public TResult GetFirstOrDefault<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool disableTracking = true, bool ignoreQueryFilters = false)
+    public TResult GetFirstOrDefault<TResult>(
+        Expression<Func<TEntity, TResult>> selector,
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool disableTracking = true,
+        bool ignoreQueryFilters = false)
     {
         throw new NotImplementedException();
     }
 
-    public Task<TEntity> GetFirstOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
-        bool disableTracking = true, bool ignoreQueryFilters = false, CancellationToken ct = default)
+    public Task<TEntity> GetFirstOrDefaultAsync(
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool disableTracking = true,
+        bool ignoreQueryFilters = false,
+        CancellationToken ct = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<TResult> GetFirstOrDefaultAsync<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool disableTracking = true, bool ignoreQueryFilters = false, CancellationToken ct = default)
+    public Task<TResult> GetFirstOrDefaultAsync<TResult>(
+        Expression<Func<TEntity, TResult>> selector,
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool disableTracking = true,
+        bool ignoreQueryFilters = false,
+        CancellationToken ct = default)
     {
         throw new NotImplementedException();
     }
@@ -80,26 +122,46 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity: class
         throw new NotImplementedException();
     }
 
-    public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool disableTracking = true,
+    public IQueryable<TEntity> GetAll(
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool disableTracking = true,
         bool ignoreQueryFilters = false)
     {
         throw new NotImplementedException();
     }
 
-    public IQueryable<TResult> GetAll<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool disableTracking = true, bool ignoreQueryFilters = false)
+    public IQueryable<TResult> GetAll<TResult>(
+        Expression<Func<TEntity, TResult>> selector,
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool disableTracking = true,
+        bool ignoreQueryFilters = false)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool disableTracking = true,
-        bool ignoreQueryFilters = false, CancellationToken ct = default)
+    public Task<IList<TEntity>> GetAllAsync(
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool disableTracking = true,
+        bool ignoreQueryFilters = false,
+        CancellationToken ct = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IList<TResult>> GetAllAsync<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
-        bool disableTracking = true, bool ignoreQueryFilters = false, CancellationToken ct = default)
+    public Task<IList<TResult>> GetAllAsync<TResult>(
+        Expression<Func<TEntity, TResult>> selector,
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool disableTracking = true,
+        bool ignoreQueryFilters = false,
+        CancellationToken ct = default)
     {
         throw new NotImplementedException();
     }

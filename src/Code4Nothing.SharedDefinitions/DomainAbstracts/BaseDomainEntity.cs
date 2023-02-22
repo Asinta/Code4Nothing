@@ -1,6 +1,6 @@
 namespace Code4Nothing.SharedDefinitions.DomainAbstracts;
 
-public abstract record BaseDomainEntity : IDomainEvent
+public abstract record BaseDomainEntity : IDomainEvent, IAggregate
 {
     private readonly List<INotification> _domainEvents = new();
     

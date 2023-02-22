@@ -47,5 +47,6 @@ public class Code4NothingBlogsDbContext : DbContext
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.HasDefaultSchema(Enum.GetName(DatabaseSchema.Blogs));
+        modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
     }
 }
