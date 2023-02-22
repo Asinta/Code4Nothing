@@ -1,12 +1,8 @@
 namespace Code4Nothing.Blogs.Domain.Entities;
 
-public class Category
+public record Category : BaseDomainEntity
 {
-    public Category()
-    {
-        Id = Guid.NewGuid();
-        Posts = new HashSet<Post>();
-    }
+    private Category() { }
 
     public Category(string name)
     {
@@ -15,11 +11,30 @@ public class Category
         NormalizedName = name.ToNormalizedString();
         Posts = new HashSet<Post>();
     }
+    
+    public Category(string name, string normalizedName)
+    {
+        Id = Guid.NewGuid();
+        Name = name;
+        NormalizedName = normalizedName;
+        Posts = new HashSet<Post>();
+    }
 
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public string NormalizedName { get; set; }
+    public Guid Id { get; }
+    public string Name { get; private set; }
+    public string NormalizedName { get; private set; }
 
     // Navigation Property
-    public virtual ICollection<Post> Posts { get; set; }
+    public virtual ICollection<Post> Posts { get; private set; }
+    
+    public void ChangeName(string newName)
+    {
+        Name = newName;
+        NormalizedName = newName.ToNormalizedString();
+    }
+
+    public void ChangeNormalizedName(string normName)
+    {
+        NormalizedName = normName;
+    }
 }
