@@ -20,7 +20,6 @@ public record Tag : BaseDomainEntity
         Posts = new HashSet<Post>();
     }
     
-    
     public Guid Id { get; }
     public string Name { get; private set; }
     public string NormalizedName { get; private set; }

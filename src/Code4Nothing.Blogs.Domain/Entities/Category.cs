@@ -20,7 +20,7 @@ public record Category : BaseDomainEntity
         Posts = new HashSet<Post>();
     }
 
-    public Guid Id { get; }
+    public Guid Id { get; set; }
     public string Name { get; private set; }
     public string NormalizedName { get; private set; }
 

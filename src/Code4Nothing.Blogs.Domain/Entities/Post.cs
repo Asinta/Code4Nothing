@@ -2,7 +2,10 @@ namespace Code4Nothing.Blogs.Domain.Entities;
 
 public record Post : BaseDomainEntity
 {
-    private Post() { }
+    private Post()
+    {
+        Tags = new HashSet<Tag>();
+    }
 
     public Post(string title, string @abstract, string content, Category category)
     {
